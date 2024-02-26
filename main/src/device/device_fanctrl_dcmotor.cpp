@@ -6,6 +6,8 @@
 CDeviceFanControlDCMotor::CDeviceFanControlDCMotor()
 {
     m_motor_pwm_driver = new CMotorPWMDriver();
+    GetLoggerM(eLogType::Info)->Log("----- CDeviceFanControlDCMotor -----");
+    GetLoggerM(eLogType::Info)->Log("----- Checking m_motor_pwm_driver -----");
     if (m_motor_pwm_driver) {
         m_motor_pwm_driver->initialize(GPIO_PIN_MOTOR_PWM);
         m_motor_pwm_driver->set_enable();
