@@ -21,8 +21,7 @@ key_pem_path=${project_path}/resource/Attestation/PAI-${VENDOR_ID}-${PRODUCT_ID}
 cert_pem_path=${project_path}/resource/Attestation/PAI-${VENDOR_ID}-${PRODUCT_ID}-Cert.pem
 cd_out_path=${project_path}/resource/Attestation/CD-${VENDOR_ID}-${PRODUCT_ID}.der
 
-cd ${bin_path}
-./chip-cert gen-cd \
+chip-cert gen-cd \
     -f 1 -l 0 -i 0 -n 1 -t 0 \
     -V 0x${VENDOR_ID} \
     -p 0x${PRODUCT_ID} \
@@ -45,5 +44,3 @@ cd ${mfg_tool_path}
     -cd ${cd_out_path} \
     --passcode ${PASSCODE} \
     --discriminator ${DISCRIMINATOR}
-
-cd ${wd}
