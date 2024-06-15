@@ -33,17 +33,18 @@ cd ${bin_path}
     -O ${cd_out_path}
 
 # step.2: create factory partition
-mfg_tool_path=${_esp_matter_path}/tools/mfg_tool
-cd ${mfg_tool_path}
-./mfg_tool.py \
-    -cn "YOGUYI DCMotorFan" \
-    -v 0x${VENDOR_ID} \
-    -p 0x${PRODUCT_ID} \
-    --pai \
-    -k ${key_pem_path} \
-    -c ${cert_pem_path} \
-    -cd ${cd_out_path} \
-    --passcode ${PASSCODE} \
-    --discriminator ${DISCRIMINATOR}
+esp-matter-mfg-tool \
+  -cn "YOGUYI DCMotorFan" \
+  -v 0x${VENDOR_ID} \
+  -p 0x${PRODUCT_ID} \
+  --pai  \
+  -c ${cert_pem_path} \
+  -k ${key_pem_path} \
+  -cd /${cd_out_path} \
+  --product-name Fan \
+  --hw-ver 1 \
+  --hw-ver-str v1.0 \
+  --passcode ${PASSCODE} \
+  --discriminator ${DISCRIMINATOR}
 
 cd ${wd}
